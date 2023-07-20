@@ -38,5 +38,5 @@ const connect = async()=>{
 
 app.listen(process.env.PORT,()=>{
     connect();
-    console.log(`listening to port 7000...`);
+    console.log(`listening to port...`);
 })
