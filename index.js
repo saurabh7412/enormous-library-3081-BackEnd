@@ -22,9 +22,22 @@ app.use(express.json());
 
 app.use(TimeLogger);
 
+
+app.get('/',(req,res)=>{
+    try {
+        res.send('Welcome to Homepage !')
+    } catch (error) {
+        res.status(400).send(error)
+    }
+
+})
+
 app.use('/user', userRoute )
 
 app.use('/posts', postRoute )
+
+
+
 
 const connect = async()=>{
     try {

@@ -11,15 +11,6 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 
-router.get('/',(req,res)=>{
-    try {
-        res.send('Welcome to Homepage !')
-    } catch (error) {
-        res.status(400).send(error)
-    }
-
-})
-
 router.get('/get', async (req,res)=>{
     try {
         const users = await Users.find();
