@@ -5,10 +5,11 @@ Routes -
 2. PostRoute
 
 Endpoints for /user route -
-1. / - to get all the users that have been registered.
-2. /register - to register a new user in database.
-3. /login - to login the existing user by providing jwt token.
-4. /logout - to logout currently logged in user.
+1. / - Home page.
+2. /get - to get all the users that have been registered.
+3. /register - to register a new user in database.
+4. /login - to login the existing user by providing jwt token.
+5. /logout - to logout currently logged in user.
 
 Endpoints for /posts route -
 1. / - to get all the posts that have been stored in database.
