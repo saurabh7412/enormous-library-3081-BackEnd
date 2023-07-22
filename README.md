@@ -16,4 +16,12 @@ Endpoints for /posts route -
 3. /update/:id - to update information of existing post using post id.
 4. /delete/:id - to delete an existing post from database using post id.
 
-Note : For /posts route endpoints, Authentication token is required to access them. Token will be generated during user login.
+Note : For /posts route endpoints, the Authentication token is required to access them. Token will be generated during user login.
+
+Searching, Filtering & Pagination - 
+1. User can filter houses according to "title", "location" & "price".
+   Ex-    /posts/?title=Oakwood&location=angeles&price=3200
+
+2. To search for something the user can use ?q="something" after /posts.
+   
+3. To apply pagination use ?limit=5&page=2 after /posts.
