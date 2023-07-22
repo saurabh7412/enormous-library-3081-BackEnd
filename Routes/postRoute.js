@@ -11,16 +11,49 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const Auth = require("../Middleware/Auth");
 
-router.get("/",Auth, async (req, res) => {
+router.get("/", Auth, async (req, res) => {
   try {
-    const AllPosts = await Posts.find();
+    const { title, location, price, page, limit, q } = req.query;
+
+    let filter = {};
+    let pages = 1;
+    let limits = 40;
+
+    if (q) {
+      filter.description = { $regex: q, $options: "i" };
+    }
+    
+    if (title) {
+      filter.title = { $regex: title, $options: "i" };
+    }
+
+    if (location) {
+      filter.location = { $regex: location, $options: "i" };
+    }
+
+    if (page) {
+      pages = page;
+    }
+    if (limit) {
+      limits = limit;
+    }
+
+    if (price) {
+      filter.price = price;
+    }
+
+    const skip = (Number(page) - 1) * limit;
+
+    const AllPosts = await Posts.find(filter).skip(skip).limit(limits);
     res.status(200).send({ AllPosts });
+
+
   } catch (error) {
     res.status(400).send(error);
   }
 });
 
-router.post("/add",Auth, async (req, res) => {
+router.post("/add", Auth, async (req, res) => {
   try {
     const newHome = await Posts.create(req.body);
     res.status(200).send({ msg: "New Home Added !", newHome });
@@ -29,7 +62,7 @@ router.post("/add",Auth, async (req, res) => {
   }
 });
 
-router.patch("/update/:id",Auth, async (req, res) => {
+router.patch("/update/:id", Auth, async (req, res) => {
   try {
     const { id } = req.params;
 
@@ -43,17 +76,19 @@ router.patch("/update/:id",Auth, async (req, res) => {
   }
 });
 
-router.delete("/delete/:id",Auth, async (req, res) => {
+router.delete("/delete/:id", Auth, async (req, res) => {
   try {
     const { id } = req.params;
 
     const deletedData = await Posts.findByIdAndDelete(id);
 
     return res.status(200).send({ msg: "Home Info Deleted", deletedData });
-
   } catch (error) {
     res.status(400).send(error);
   }
 });
+
+
+
 
 module.exports = router;

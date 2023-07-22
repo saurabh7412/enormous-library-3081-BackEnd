@@ -7,6 +7,8 @@ const userRoute = require('./Routes/userRoute');
 
 const postRoute = require("./Routes/postRoute");
 
+const adminRoute = require('./Routes/adminRoute');
+
 const cors = require('cors');
 const TimeLogger = require('./Middleware/TimeLogger');
 
@@ -36,7 +38,7 @@ app.use('/user', userRoute )
 
 app.use('/posts', postRoute )
 
-
+app.use('/admin',adminRoute);
 
 
 const connect = async()=>{

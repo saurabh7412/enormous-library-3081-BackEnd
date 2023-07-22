@@ -65,7 +65,7 @@ router.post('/login', async(req,res)=>{
             return res.status(400).send('Wrong Password')
         }
 
-        const token = jwt.sign({userID : userCheck._id, email : userCheck.email}, 'abc123', {expiresIn : '5d'});
+        const token = jwt.sign({userID : userCheck._id, email : userCheck.email}, 'abc123', {expiresIn : '5d'}); // token = abcd
 
         res.status(200).send({msg : 'Login Successful', token});
         
