@@ -32,7 +32,8 @@ Endpoints for /reqinfo route -
 Searching, Filtering & Pagination - 
 1. User can filter houses according to "title", "location" & "price".
    Ex-    /posts/?title=Oakwood&location=angeles&price=3200
+   These queries can be added individually as well.
 
-2. To search for something the user can use ?q="something" after /posts.
+3. To search for something the user can use ?q="something" after /posts.
    
-3. To apply pagination use ?limit=5&page=2 after /posts.
+4. To apply pagination use ?limit=5&page=2 after /posts.
