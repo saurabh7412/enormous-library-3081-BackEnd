@@ -53,6 +53,20 @@ router.get("/", Auth, async (req, res) => {
   }
 });
 
+
+router.get('/:id', async(req,res)=>{
+  try {
+    const {id} = req.params;
+    console.log(id);
+    const singlePost = await Posts.findById(id);
+    return res.status(200).send({singlePost})
+
+  } catch (error){
+    res.status(400).send(error)
+  }
+})
+
+
 router.post("/add", Auth, async (req, res) => {
   try {
     const newHome = await Posts.create(req.body);
