@@ -18,10 +18,23 @@ Endpoints for /posts route -
 
 Note : For /posts route endpoints, the Authentication token is required to access them. Token will be generated during user login.
 
+Endpoints for /admin route -
+1. /login - A person can log in as an Admin. Use these credentials to log in as Admin,
+   username : "saurabh",
+   password : "saurabh123"
+
+Endpoints for /tour route -
+1. / - to schedule a tour. Tour info will be saved in the database. 
+
+Endpoints for /reqinfo route -
+1.  / - to request info about a property. Your query will be saved in the database. 
+
 Searching, Filtering & Pagination - 
 1. User can filter houses according to "title", "location" & "price".
    Ex-    /posts/?title=Oakwood&location=angeles&price=3200
-
-2. To search for something the user can use ?q="something" after /posts.
    
-3. To apply pagination use ?limit=5&page=2 after /posts.
+   These queries can be added individually as well.
+
+3. To search for something the user can use ?q="something" after /posts.
+   
+4. To apply pagination use ?limit=5&page=2 after /posts.
